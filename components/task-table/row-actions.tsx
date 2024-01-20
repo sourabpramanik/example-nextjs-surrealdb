@@ -78,7 +78,7 @@ export function DataTableRowActions<TData>({
       {isAuthor && (
         <Button className="relative min-w-14" variant={"ghost"}>
           {isDeleting ? (
-            <Loader className="w-4 h-4 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" />
+            <Loader className="w-4 h-4 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 animate-spin" />
           ) : (
             <Trash2 className="w-4 h-4" onClick={handleDelete} />
           )}
@@ -87,7 +87,7 @@ export function DataTableRowActions<TData>({
 
       <Button className="relative min-w-14" variant={"ghost"}>
         {isCopying ? (
-          <Loader className="w-4 h-4 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" />
+          <Loader className="w-4 h-4 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 animate-spin" />
         ) : (
           <CopyPlusIcon className="w-4 h-4" onClick={handleCreateCopy} />
         )}
