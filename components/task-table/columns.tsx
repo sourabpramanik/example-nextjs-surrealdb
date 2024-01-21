@@ -1,14 +1,14 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-
 import { Badge } from "../ui/badge";
-
 import { labels, priorities, statuses } from "./data";
 import { DataTableColumnHeader } from "./column-header";
 import { DataTableRowActions } from "./row-actions";
 import { Task } from "@/lib/schema";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarImage } from "../ui/avatar";
+import { useAuthor } from "@/lib/author/hook";
+import { Loader } from "lucide-react";
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -16,14 +16,31 @@ export const columns: ColumnDef<Task>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Author" />
     ),
-    cell: ({ row }) => (
-      <div className="w-[30px]">
-        <Avatar className="h-8 w-8">
-          <AvatarImage src={""} alt={""} />
-          <AvatarFallback>AN</AvatarFallback>
-        </Avatar>
-      </div>
-    ),
+    cell: ({ row }) => {
+      const userId = row.original.author as string;
+      const { data, isLoading } = useAuthor(userId);
+
+      return (
+        <div className="w-[30px]">
+          {isLoading ? (
+            <Loader className="w-5 h-5 animate-spin" />
+          ) : (
+            <>
+              {data && (
+                <Avatar className="h-8 w-8">
+                  <AvatarImage
+                    src={
+                      data.data?.image ?? "https://avatar.vercel.sh/" + userId
+                    }
+                    alt={userId + " image"}
+                  />
+                </Avatar>
+              )}
+            </>
+          )}
+        </div>
+      );
+    },
     enableSorting: false,
     enableHiding: false,
   },
