@@ -1,8 +1,8 @@
 import useSWR from "swr";
-import { getUserById } from "./handler";
+import { getAuthorById } from "./handler";
 
 export const useAuthor = (id: string) => {
-    return useSWR(`/api/user/${id}`, async () => await getUserById(
+    return useSWR(`/api/user/${id}`, async () => await getAuthorById(
         id
     ));
 };

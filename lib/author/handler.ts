@@ -2,7 +2,7 @@ import { User } from "../schema";
 
 const endpoint = process.env.NEXT_PUBLIC_BASE_URL + '/api/user'
 
-export const getUserById = async (id: string) => {
+export const getAuthorById = async (id: string) => {
     const res: {
         success: boolean;
         data?: User;

@@ -6,7 +6,7 @@ type TaskStore = {
     tasks: Task[],
     appendTask?: (newTasks: Task) => void,
     removeTask?: (newTask: Task) => void,
-    updateTask?: (newTasks: Task) => void,
+    updateTask?: (newTask: Task) => void,
 }
 
 export const useTaskStore = create<TaskStore>((set) => {

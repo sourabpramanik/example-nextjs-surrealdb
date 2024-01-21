@@ -1,6 +1,5 @@
 import { Task } from "../schema";
 
-
 const endpoint = process.env.NEXT_PUBLIC_BASE_URL + '/api/task'
 // Create a new task
 export const createTask = async (payload: Task) => {

@@ -68,12 +68,16 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       ...(props.next && props.next.length > 0
         ? { callbackUrl: props.next }
         : {}),
-    }).then((res) => {
-      if (res?.status !== 200) {
-        toast.error("Please try again later. Something went wrong");
-      }
-      setIsLoginWithGoogle(false);
-    });
+    })
+      .then(() => {
+        toast.success("Redirecting...");
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        setIsLoginWithGoogle(false);
+      });
   }
 
   function onLoginWithGithub() {
@@ -83,12 +87,16 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       ...(props.next && props.next.length > 0
         ? { callbackUrl: props.next }
         : {}),
-    }).then((res) => {
-      if (res?.status !== 200) {
-        toast.error("Please try again later. Something went wrong");
-      }
-      setIsLoginWithGithub(false);
-    });
+    })
+      .then(() => {
+        toast.success("Redirecting...");
+      })
+      .catch(() => {
+        toast.error("Something went wrong.");
+      })
+      .finally(() => {
+        setIsLoginWithGoogle(false);
+      });
   }
 
   return (
