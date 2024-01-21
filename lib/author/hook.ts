@@ -1,7 +1,8 @@
 import useSWR from "swr";
-import { User } from "../schema";
 import { getUserById } from "./handler";
 
-export const useUser = (id: string) => {
-    return useSWR(`/api/sticky`, async () => await getUserById(id));
+export const useAuthor = (id: string) => {
+    return useSWR(`/api/user/${id}`, async () => await getUserById(
+        id
+    ));
 };
