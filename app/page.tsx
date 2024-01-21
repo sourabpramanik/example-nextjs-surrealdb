@@ -4,7 +4,6 @@ import { surrealDatabase } from "./api/lib/surreal";
 
 export default async function Home() {
   const { data } = await getAllTasks();
-  console.log(data);
 
   return (
     <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
