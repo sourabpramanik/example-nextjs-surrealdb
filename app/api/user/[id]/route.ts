@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET(_: Request, { params }: { params: { id: string } }) {
 
     const response = await surrealDatabase.select<User>(
-        'user:' + params.id
+        params.id
     );
 
     return NextResponse.json({
